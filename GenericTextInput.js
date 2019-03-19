@@ -227,26 +227,13 @@ export default class GenericTextInput extends PureComponent {
   }
 
   onChangeText = (value) => {
-    if (this.props.type === 'tel') {
-      this.setState((prevState, props) => ({
-        value,
-        // eslint-disable-next-line
-        valid: this.state.focused ? true : validationMap(props.type)(value, prevState.countryCode)
-      }))
-    } else if (this.props.type === 'otp') {
+    if (this.props.type === 'otp') {
       this.setState((prevState, props) => ({
         value,
         // eslint-disable-next-line
         valid: this.state.focused ? true : validationMap(props.type)(value)
       }), this.props.onChangeText(value))
-    } else {
-      this.setState((prevState, props) => ({
-        value,
-        // eslint-disable-next-line
-        valid: validationMap(props.type)(value)
-      }))
     }
-    //this.props.onChangeText(value)
   }
 
   onEndEditing = () => {
